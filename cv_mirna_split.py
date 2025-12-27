@@ -1031,7 +1031,7 @@ if __name__ == "__main__":
 
     # Params
     file_path = args.data_path
-    best_params_file_path = args.best_params_file_path
+    best_params_file_path = f"{args.best_params_file_path.split('.')[0]}_{split_mode}.json"
     output_folder = args.output_folder
     negative_ratio = args.negative_ratio
     test_size = args.test_size
