@@ -78,10 +78,6 @@ This repository contains the complete implementation and extensive experimental 
 │   ├── models_cv_random/
 │   ├── models_cv_cold_disease/
 │   └── models_cv_cold_mirna/
-├── results/                # Experimental results
-│   ├── cross_validation_summary_*.json
-│   ├── stratified_results_*/
-│   └── ablation_results_*/
 ├── requirements.txt        # Python dependencies
 └── README.md               # This file
 ```
