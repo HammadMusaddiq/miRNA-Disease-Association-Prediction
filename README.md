@@ -84,6 +84,7 @@ This repository contains the complete implementation and extensive experimental 
 │   └── ablation_results_*/
 ├── requirements.txt        # Python dependencies
 └── README.md               # This file
+```
 
 ## Cross-Validation (Choose a Split Mode)
 
@@ -102,6 +103,7 @@ python scripts/cv_mirna_split.py \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
   --optuna_tuning True
+```
 
 ### Cold-Disease Split
 ```bash
@@ -110,6 +112,7 @@ python scripts/cv_mirna_split.py \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
   --optuna_tuning True
+```
 
 ### Cold-miRNA Split
 ```bash
@@ -118,6 +121,7 @@ python scripts/cv_mirna_split.py \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
   --optuna_tuning True
+```
 
 Output: Creates best_params_cv_random.json, best_params_cv_cold_disease.json, or best_params_cv_cold_mirna.json
 
@@ -131,6 +135,7 @@ python scripts/cv_mirna_split.py \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
   --optuna_tuning False
+```
 
 ### Cold-Disease Split (loads best_params_cv_cold_disease.json)
 ```bash
@@ -139,6 +144,7 @@ python scripts/cv_mirna_split.py \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
   --optuna_tuning False
+```
 
 ### Cold-miRNA Split (loads best_params_cv_cold_mirna.json)
 ```bash
@@ -147,6 +153,7 @@ python scripts/cv_mirna_split.py \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
   --optuna_tuning False
+```
 
 ### Expected Outputs
 ```text
@@ -167,3 +174,4 @@ models_cv_cold_mirna/          # For mode 2
 ├── best_model_fold_1.pth
 ├── ...
 └── cross_validation_summary.json
+```
