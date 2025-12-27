@@ -956,7 +956,7 @@ if __name__ == "__main__":
         parser.add_argument(
             "--data_path",
             type=str,
-            default="mirna_data/alldata.xlsx",
+            default="data/alldata.xlsx",
             help="Path to miRNA-disease association Excel file",
         )
         parser.add_argument(
