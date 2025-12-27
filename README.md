@@ -80,7 +80,7 @@ This repository contains the complete implementation and extensive experimental 
 ├── requirements.txt        # Python dependencies
 └── README.md               # This file
 ```
-## 1. Environment Setup
+## Environment Setup
 
 ### Prerequisites
 - Python 3.10
@@ -133,7 +133,7 @@ python cv_mirna_split.py \
 
 Output: Creates best_params_cv_random.json, best_params_cv_cold_disease.json, or best_params_cv_cold_mirna.json
 
-## 1. Run with Optuna Tuning OFF
+## 2. Run with Optuna Tuning OFF
 Use after tuning has generated the JSON file to train/evaluate with saved parameters.
 
 ###  Random Split (loads best_params_cv_random.json)
