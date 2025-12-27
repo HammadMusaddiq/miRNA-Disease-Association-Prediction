@@ -69,11 +69,10 @@ This repository contains the complete implementation and extensive experimental 
 ## 🗂️ Repository Structure
 
 ```text
-├── data/                    # Dataset files
-├── scripts/
-│   ├── cv_mirna_split.py              # Main cross-validation experiments
-│   ├── miRNA_ablation_stratified.py   # Stratified analysis
-│   ├── miRNA_ablation_study_final.py  # Ablation study
+├── data/                    # Dataset files (Upload data to this folder)
+├── cv_mirna_split.py              # Main cross-validation experiments
+├── miRNA_ablation_stratified.py   # Stratified analysis (released after paper acceptance)
+├── miRNA_ablation_study_final.py  # Ablation study (released after paper acceptance)
 ├── models_cv/              # Saved model checkpoints
 │   ├── models_cv_random/
 │   ├── models_cv_cold_disease/
@@ -81,8 +80,21 @@ This repository contains the complete implementation and extensive experimental 
 ├── requirements.txt        # Python dependencies
 └── README.md               # This file
 ```
+## 1. Environment Setup
 
-## Cross-Validation (Choose a Split Mode)
+### Prerequisites
+- Python 3.10
+- CUDA-capable GPU (recommended) or CPU
+
+### Installation
+Using requirements.txt
+```bash
+# Create and activate virtual environment
+python3.10 -m venv hybridgnn_env
+source hybridgnn_env/bin/activate  
+```
+
+## Experiment: Cross-Validation (Choose a Split Mode)
 
 ### Mode Mapping
 - `--mode 0` = random split
@@ -94,7 +106,7 @@ This performs hyperparameter optimization and saves best parameters.
 
 ### Random Split
 ```bash
-python scripts/cv_mirna_split.py \
+python cv_mirna_split.py \
   --mode 0 \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
@@ -103,7 +115,7 @@ python scripts/cv_mirna_split.py \
 
 ### Cold-Disease Split
 ```bash
-python scripts/cv_mirna_split.py \
+python cv_mirna_split.py \
   --mode 1 \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
@@ -112,7 +124,7 @@ python scripts/cv_mirna_split.py \
 
 ### Cold-miRNA Split
 ```bash
-python scripts/cv_mirna_split.py \
+python cv_mirna_split.py \
   --mode 2 \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
@@ -126,7 +138,7 @@ Use after tuning has generated the JSON file to train/evaluate with saved parame
 
 ###  Random Split (loads best_params_cv_random.json)
 ```bash
-python scripts/cv_mirna_split.py \
+python cv_mirna_split.py \
   --mode 0 \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
@@ -135,7 +147,7 @@ python scripts/cv_mirna_split.py \
 
 ### Cold-Disease Split (loads best_params_cv_cold_disease.json)
 ```bash
-python scripts/cv_mirna_split.py \
+python cv_mirna_split.py \
   --mode 1 \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
@@ -144,7 +156,7 @@ python scripts/cv_mirna_split.py \
 
 ### Cold-miRNA Split (loads best_params_cv_cold_mirna.json)
 ```bash
-python scripts/cv_mirna_split.py \
+python cv_mirna_split.py \
   --mode 2 \
   --data_path data/alldata.xlsx \
   --best_params_file_path best_params_cv.json \
