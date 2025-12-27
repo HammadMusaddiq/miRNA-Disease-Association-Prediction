@@ -1,1 +1,88 @@
-# miRNA-Disease-Association-Prediction
+# HybridGNN: miRNA–Disease Association Prediction
+
+## 📋 Overview
+**HybridGNN** is a novel graph neural network architecture that integrates **Graph Convolutional Networks (GCN)**, **Graph Attention Networks (GAT)**, and **Matrix Decomposition with Matrix Factorization (MDMF)** for predicting miRNA–disease associations.  
+This repository contains the complete implementation and extensive experimental evaluation across multiple data split strategies.
+
+---
+
+## 🎯 Key Features
+- **Hybrid Architecture**: Combines GCN, GAT, and MDMF for comprehensive feature learning  
+- **Multiple Split Strategies**: Random, cold-disease, and cold-miRNA evaluation scenarios  
+- **Stratified Analysis**: Performance breakdown by disease categories and miRNA families  
+- **Comprehensive Evaluation**: 5-fold cross-validation with rigorous hyperparameter optimization  
+
+---
+
+## 📊 Performance Results
+
+### Overall Performance Across Split Strategies
+
+| Metric       | Random Split        | Cold-Disease         | Cold-miRNA          |
+|--------------|---------------------|----------------------|---------------------|
+| AUC-ROC      | 0.9765 ± 0.0006     | 0.9365 ± 0.0054      | 0.9678 ± 0.0009     |
+| Accuracy     | 0.9186 ± 0.0028     | 0.5756 ± 0.0279      | 0.9034 ± 0.0024     |
+| Precision    | 0.9013 ± 0.0057     | 0.5424 ± 0.0170      | 0.8966 ± 0.0097     |
+| Recall       | 0.9403 ± 0.0056     | 0.9809 ± 0.0079      | 0.9123 ± 0.0106     |
+| F1-Score     | 0.9204 ± 0.0026     | 0.6983 ± 0.0123      | 0.9042 ± 0.0022     |
+
+---
+
+### Disease Category Performance (AUC)
+
+| Category             | Random | Cold-Disease | Cold-miRNA |
+|----------------------|--------|--------------|------------|
+| Cancer               | 0.9780 | 0.9661       | 0.9770     |
+| Fibrotic             | 0.9643 | 0.9725       | 0.9798     |
+| Neurological         | 0.9791 | 0.9140       | 0.9778     |
+| Cardiovascular       | 0.9762 | 0.9207       | 0.9730     |
+| Inflammatory         | 0.9662 | 0.9246       | 0.9693     |
+| Genetic / Syndrome   | 0.9747 | 0.8904       | 0.9576     |
+| Other                | 0.9745 | 0.9117       | 0.9633     |
+
+---
+
+### Top Performing miRNA Families (AUC ≥ 0.95)
+
+| Family   | Random | Cold-Disease | Cold-miRNA |
+|----------|--------|--------------|------------|
+| miR-21   | 1.000  | 0.900        | –          |
+| miR-145  | 1.000  | 0.975        | –          |
+| miR-125  | 0.986  | 0.964        | 0.929      |
+| miR-520  | 0.968  | 0.990        | 0.945      |
+| miR-378  | 0.947  | 0.965        | –          |
+| miR-199  | –      | 0.972        | –          |
+
+---
+
+### Challenging miRNA Families (AUC < 0.87)
+
+| Family   | Random | Cold-Disease | Cold-miRNA |
+|----------|--------|--------------|------------|
+| let-7    | 0.889  | 0.891        | 0.876      |
+| miR-29  | 0.872  | 0.886        | 0.822      |
+| miR-126 | 0.988  | –            | 0.837      |
+| miR-181 | 0.906  | 0.917        | 0.788      |
+
+---
+
+## 🗂️ Repository Structure
+
+```text
+hybridgnn/
+├── data/                    # Dataset files
+├── scripts/
+│   ├── cv_mirna_split.py              # Main cross-validation experiments
+│   ├── miRNA_ablation_stratified.py   # Stratified analysis
+│   ├── miRNA_ablation_study_final.py  # Ablation study
+│   └── utils/                         # Utility functions
+├── models_cv/              # Saved model checkpoints
+│   ├── models_cv_random/
+│   ├── models_cv_cold_disease/
+│   └── models_cv_cold_mirna/
+├── results/                # Experimental results
+│   ├── cross_validation_summary_*.json
+│   ├── stratified_results_*/
+│   └── ablation_results_*/
+├── requirements.txt        # Python dependencies
+└── README.md               # This file
